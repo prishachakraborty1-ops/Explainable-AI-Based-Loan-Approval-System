@@ -4,7 +4,7 @@
   "metadata": {
     "colab": {
       "provenance": [],
-      "authorship_tag": "ABX9TyO46cd6kLiUw3Fgzlm5YKWl",
+      "authorship_tag": "ABX9TyOsLtsdaP733M1CKUPE0DH+",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -45,7 +45,7 @@
       "metadata": {
         "id": "Z-AiiXk8lu_f"
       },
-      "execution_count": 16,
+      "execution_count": 2,
       "outputs": []
     },
     {
@@ -111,7 +111,7 @@
       "metadata": {
         "id": "tyTkYb8yl-Ej"
       },
-      "execution_count": 8,
+      "execution_count": 9,
       "outputs": []
     },
     {
@@ -122,7 +122,7 @@
       "metadata": {
         "id": "z7cP0-FCl-Bq"
       },
-      "execution_count": 9,
+      "execution_count": 10,
       "outputs": []
     },
     {
@@ -133,7 +133,7 @@
       "metadata": {
         "id": "Dx1djXTXl9-w"
       },
-      "execution_count": 10,
+      "execution_count": 11,
       "outputs": []
     },
     {
@@ -144,7 +144,7 @@
       "metadata": {
         "id": "37kUptcFl98N"
       },
-      "execution_count": 11,
+      "execution_count": 12,
       "outputs": []
     },
     {
@@ -156,7 +156,7 @@
       "metadata": {
         "id": "SuVVlK2Ql951"
       },
-      "execution_count": 12,
+      "execution_count": 13,
       "outputs": []
     },
     {
@@ -167,7 +167,7 @@
       "metadata": {
         "id": "MxOFbvmml93N"
       },
-      "execution_count": 13,
+      "execution_count": 14,
       "outputs": []
     },
     {
@@ -178,7 +178,7 @@
       "metadata": {
         "id": "JRRmcsVFl9QF"
       },
-      "execution_count": 14,
+      "execution_count": 15,
       "outputs": []
     },
     {
@@ -195,7 +195,7 @@
         "    'Missing Percentage (%)': missing_percentage\n",
         "})\n"
       ],
-      "execution_count": 26,
+      "execution_count": 16,
       "outputs": []
     },
     {
@@ -214,9 +214,9 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "Y9ej0zfnt2v7",
-        "outputId": "9f524914-0f6d-4516-de90-6350baf4c057"
+        "outputId": "3da9aac4-d309-435c-b308-0d6ed3d08e57"
       },
-      "execution_count": 27,
+      "execution_count": 17,
       "outputs": [
         {
           "output_type": "stream",
@@ -234,7 +234,7 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "066fa9f1",
-        "outputId": "ac6049fa-d4d0-4518-b67c-63d487b0dce1"
+        "outputId": "21016539-465e-45fd-bb28-8ac16faf0a0d"
       },
       "source": [
         "duplicate_rows = df_p1.duplicated().sum()\n",
@@ -248,7 +248,7 @@
         "\n",
         "print(f\"Current shape of the dataset after handling duplicates: {df_p1.shape}\")\n"
       ],
-      "execution_count": 28,
+      "execution_count": 18,
       "outputs": [
         {
           "output_type": "stream",
@@ -265,12 +265,15 @@
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 334
+          "height": 225
         },
         "id": "338c5e4b",
-        "outputId": "8b3cb4ab-4775-4f5f-a9d5-3de2f1f8654e"
+        "outputId": "5bbf5a6d-f796-41e9-838e-3121ffaedb66"
       },
       "source": [
+        "import numpy as np\n",
+        "numeric_df = df_p1.select_dtypes(include=[np.number]).drop(columns=['loan_id'])\n",
+        "\n",
         "plt.figure(figsize=(15, 10))\n",
         "for i, col in enumerate(numeric_df.columns[:-1]): # Exclude 'loan_status_encoded' for individual plots\n",
         "    plt.subplot(3, 3, i + 1)\n",
@@ -281,7 +284,7 @@
         "plt.tight_layout()\n",
         "plt.show()\n"
       ],
-      "execution_count": 29,
+      "execution_count": 20,
       "outputs": [
         {
           "output_type": "display_data",
@@ -300,10 +303,10 @@
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 334
+          "height": 224
         },
         "id": "7dcb4494",
-        "outputId": "8800a9a9-4aec-4d1c-de88-ff026d9e12c4"
+        "outputId": "59cd044d-f45e-4102-d2b3-2da00a45f358"
       },
       "source": [
         "plt.figure(figsize=(15, 10))\n",
@@ -315,7 +318,7 @@
         "plt.tight_layout()\n",
         "plt.show()\n"
       ],
-      "execution_count": 30,
+      "execution_count": 21,
       "outputs": [
         {
           "output_type": "display_data",
@@ -334,12 +337,14 @@
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 214
+          "height": 146
         },
         "id": "14ae9bc6",
-        "outputId": "e7b72cee-5618-4084-9d87-9446279a5ad3"
+        "outputId": "737babf5-e678-4e86-95ae-64131d9ed229"
       },
       "source": [
+        "cat_features = ['education', 'self_employed']\n",
+        "\n",
         "plt.figure(figsize=(12, 5))\n",
         "for i, col in enumerate(cat_features):\n",
         "    plt.subplot(1, 2, i + 1)\n",
@@ -350,7 +355,7 @@
         "plt.tight_layout()\n",
         "plt.show()\n"
       ],
-      "execution_count": 38,
+      "execution_count": 23,
       "outputs": [
         {
           "output_type": "display_data",
@@ -372,7 +377,7 @@
       "metadata": {
         "id": "WNJG5ZxKn1y_"
       },
-      "execution_count": 40,
+      "execution_count": 24,
       "outputs": []
     },
     {
@@ -387,9 +392,9 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "qzLRZvG3ohEL",
-        "outputId": "35f6be3a-5686-4f5b-d1ac-6eb49f1f16c5"
+        "outputId": "2bd29ceb-d2bd-431a-e56c-407911b2dbbf"
       },
-      "execution_count": 41,
+      "execution_count": 25,
       "outputs": [
         {
           "output_type": "stream",
@@ -418,12 +423,12 @@
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 372
+          "height": 249
         },
         "id": "4EbQLSgvoP7j",
-        "outputId": "e3f30824-1cc2-468d-a62d-cecf4cb2e49b"
+        "outputId": "d19b2ca8-4e24-46fd-b226-c2656e08683b"
       },
-      "execution_count": 42,
+      "execution_count": 26,
       "outputs": [
         {
           "output_type": "display_data",
@@ -459,7 +464,7 @@
       "metadata": {
         "id": "sR4OxR8aomgR"
       },
-      "execution_count": 43,
+      "execution_count": 27,
       "outputs": []
     },
     {
@@ -484,9 +489,9 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "f_DmAAEiovyh",
-        "outputId": "9220ce4b-3e26-45ea-a9e7-6524ee126a1b"
+        "outputId": "4ef53b1e-cda0-42da-a8ff-02671c2c041c"
       },
-      "execution_count": 44,
+      "execution_count": 28,
       "outputs": [
         {
           "output_type": "stream",
