@@ -4,7 +4,7 @@
   "metadata": {
     "colab": {
       "provenance": [],
-      "authorship_tag": "ABX9TyO49QX4y47RqS/QkSaqowyE",
+      "authorship_tag": "ABX9TyO46cd6kLiUw3Fgzlm5YKWl",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -45,7 +45,7 @@
       "metadata": {
         "id": "Z-AiiXk8lu_f"
       },
-      "execution_count": 2,
+      "execution_count": 16,
       "outputs": []
     },
     {
@@ -100,7 +100,7 @@
       "metadata": {
         "id": "KhxCA5BFl-HQ"
       },
-      "execution_count": 8,
+      "execution_count": 7,
       "outputs": []
     },
     {
@@ -111,7 +111,7 @@
       "metadata": {
         "id": "tyTkYb8yl-Ej"
       },
-      "execution_count": 9,
+      "execution_count": 8,
       "outputs": []
     },
     {
@@ -122,7 +122,7 @@
       "metadata": {
         "id": "z7cP0-FCl-Bq"
       },
-      "execution_count": 10,
+      "execution_count": 9,
       "outputs": []
     },
     {
@@ -133,7 +133,7 @@
       "metadata": {
         "id": "Dx1djXTXl9-w"
       },
-      "execution_count": 11,
+      "execution_count": 10,
       "outputs": []
     },
     {
@@ -144,7 +144,7 @@
       "metadata": {
         "id": "37kUptcFl98N"
       },
-      "execution_count": 12,
+      "execution_count": 11,
       "outputs": []
     },
     {
@@ -156,7 +156,7 @@
       "metadata": {
         "id": "SuVVlK2Ql951"
       },
-      "execution_count": 13,
+      "execution_count": 12,
       "outputs": []
     },
     {
@@ -167,7 +167,7 @@
       "metadata": {
         "id": "MxOFbvmml93N"
       },
-      "execution_count": 14,
+      "execution_count": 13,
       "outputs": []
     },
     {
@@ -178,7 +178,7 @@
       "metadata": {
         "id": "JRRmcsVFl9QF"
       },
-      "execution_count": 15,
+      "execution_count": 14,
       "outputs": []
     },
     {
@@ -195,7 +195,7 @@
         "    'Missing Percentage (%)': missing_percentage\n",
         "})\n"
       ],
-      "execution_count": 16,
+      "execution_count": 26,
       "outputs": []
     },
     {
@@ -214,9 +214,9 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "Y9ej0zfnt2v7",
-        "outputId": "43c09df9-e15a-4ede-df21-3ef5e9ca12e4"
+        "outputId": "9f524914-0f6d-4516-de90-6350baf4c057"
       },
-      "execution_count": 17,
+      "execution_count": 27,
       "outputs": [
         {
           "output_type": "stream",
@@ -234,7 +234,7 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "066fa9f1",
-        "outputId": "8757f0bf-4a54-46b0-8484-8c251a632751"
+        "outputId": "ac6049fa-d4d0-4518-b67c-63d487b0dce1"
       },
       "source": [
         "duplicate_rows = df_p1.duplicated().sum()\n",
@@ -248,7 +248,7 @@
         "\n",
         "print(f\"Current shape of the dataset after handling duplicates: {df_p1.shape}\")\n"
       ],
-      "execution_count": 18,
+      "execution_count": 28,
       "outputs": [
         {
           "output_type": "stream",
@@ -265,14 +265,12 @@
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 354
+          "height": 334
         },
         "id": "338c5e4b",
-        "outputId": "0fba8c78-be22-47f3-85a7-9d380d059c69"
+        "outputId": "8b3cb4ab-4775-4f5f-a9d5-3de2f1f8654e"
       },
       "source": [
-        "numeric_df = df_p1.select_dtypes(include=[np.number]).drop(columns=['loan_id'])\n",
-        "\n",
         "plt.figure(figsize=(15, 10))\n",
         "for i, col in enumerate(numeric_df.columns[:-1]): # Exclude 'loan_status_encoded' for individual plots\n",
         "    plt.subplot(3, 3, i + 1)\n",
@@ -281,9 +279,9 @@
         "    plt.xlabel(col)\n",
         "    plt.ylabel('Frequency')\n",
         "plt.tight_layout()\n",
-        "plt.show()"
+        "plt.show()\n"
       ],
-      "execution_count": 20,
+      "execution_count": 29,
       "outputs": [
         {
           "output_type": "display_data",
@@ -302,10 +300,10 @@
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 354
+          "height": 334
         },
         "id": "7dcb4494",
-        "outputId": "44ad8d04-ed88-4a9c-fb04-6d67a26f7d02"
+        "outputId": "8800a9a9-4aec-4d1c-de88-ff026d9e12c4"
       },
       "source": [
         "plt.figure(figsize=(15, 10))\n",
@@ -317,7 +315,7 @@
         "plt.tight_layout()\n",
         "plt.show()\n"
       ],
-      "execution_count": 21,
+      "execution_count": 30,
       "outputs": [
         {
           "output_type": "display_data",
@@ -336,14 +334,12 @@
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 226
+          "height": 214
         },
         "id": "14ae9bc6",
-        "outputId": "8e4ef560-d2eb-472c-bb99-d2e2fe791b83"
+        "outputId": "e7b72cee-5618-4084-9d87-9446279a5ad3"
       },
       "source": [
-        "cat_features = ['education', 'self_employed']\n",
-        "\n",
         "plt.figure(figsize=(12, 5))\n",
         "for i, col in enumerate(cat_features):\n",
         "    plt.subplot(1, 2, i + 1)\n",
@@ -352,9 +348,9 @@
         "    plt.xlabel(col)\n",
         "    plt.ylabel('Count')\n",
         "plt.tight_layout()\n",
-        "plt.show()"
+        "plt.show()\n"
       ],
-      "execution_count": 23,
+      "execution_count": 38,
       "outputs": [
         {
           "output_type": "display_data",
@@ -376,7 +372,7 @@
       "metadata": {
         "id": "WNJG5ZxKn1y_"
       },
-      "execution_count": 24,
+      "execution_count": 40,
       "outputs": []
     },
     {
@@ -391,9 +387,9 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "qzLRZvG3ohEL",
-        "outputId": "b3c2cf79-aff3-4213-869f-02f158b35322"
+        "outputId": "35f6be3a-5686-4f5b-d1ac-6eb49f1f16c5"
       },
-      "execution_count": 25,
+      "execution_count": 41,
       "outputs": [
         {
           "output_type": "stream",
@@ -422,12 +418,12 @@
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 394
+          "height": 372
         },
         "id": "4EbQLSgvoP7j",
-        "outputId": "7bd41909-80c3-42b1-d1e4-db8698e0ec5e"
+        "outputId": "e3f30824-1cc2-468d-a62d-cecf4cb2e49b"
       },
-      "execution_count": 26,
+      "execution_count": 42,
       "outputs": [
         {
           "output_type": "display_data",
@@ -463,7 +459,7 @@
       "metadata": {
         "id": "sR4OxR8aomgR"
       },
-      "execution_count": 27,
+      "execution_count": 43,
       "outputs": []
     },
     {
@@ -488,9 +484,9 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "f_DmAAEiovyh",
-        "outputId": "ecfe70f0-3a8a-44bc-94ec-f4121a4c0262"
+        "outputId": "9220ce4b-3e26-45ea-a9e7-6524ee126a1b"
       },
-      "execution_count": 28,
+      "execution_count": 44,
       "outputs": [
         {
           "output_type": "stream",
